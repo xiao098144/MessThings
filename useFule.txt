@@ -1,0 +1,54 @@
+@echo off
+echo 按提示操作即可
+echo 友情提醒：想关闭本窗口  输入 0 回车即可
+:again
+echo.
+echo 1、本机IP查询
+echo 2、环境变量查看
+echo 3、注册表
+echo 4、查看服务
+echo 5、ping百度
+echo 6、系统信息
+echo 7、系统运行时间
+echo 8、adb
+echo 9、adb shell
+echo 10、查看5037端口
+echo 11、打开CMD
+echo 12、设置ADB 无线端口5555
+echo 13、关闭adb服务
+echo 14、打开adb服务
+echo 15、查看Path路径
+echo 16、查看JDK版本
+echo 17、启动建立eclipse 无线调试  输入IP后回车
+echo 18、启动tomcat
+echo 19、关闭tomcat
+echo 20、查看糖医生启动时间
+echo 21、查看糖无忧启动时间
+echo "set /p IP=adb connect "192.168.0.%IP%"" 确认请输入选项后回车，如果想取消重新设置按任意键  如果想关闭 输入 0 回车
+echo.
+set /p CHOICE=
+if "%CHOICE%"=="1" ipconfig /all  
+if "%CHOICE%"=="2" set
+if "%CHOICE%"=="3" regedit
+if "%CHOICE%"=="4" services.msc
+if "%CHOICE%"=="5" ping www.baidu.com
+if "%CHOICE%"=="6" Systeminfo
+if "%CHOICE%"=="7" Systeminfo | find "系统启动时间"
+if "%CHOICE%"=="8" adb devices
+if "%CHOICE%"=="9" adb shell  
+if "%CHOICE%"=="10" netstat -aon|findstr "5037"
+if "%CHOICE%"=="11" cmd 
+if "%CHOICE%"=="12" adb tcpip 5555
+if "%CHOICE%"=="13" adb kill-server
+if "%CHOICE%"=="14" adb start-server
+if "%CHOICE%"=="15" set path
+if "%CHOICE%"=="16" java -version
+if "%CHOICE%"=="17" adb connect "192.168.0.28"
+if "%CHOICE%"=="18" startup
+if "%CHOICE%"=="19" shutdown_t
+if "%CHOICE%"=="20" adb shell am start -W com.ddoctor.user/.module.login.activity.SplashScreenActivity 
+if "%CHOICE%"=="21" adb shell am start -W com.ddoctor.user.twy/.module.login.activity.SplashScreenActivity
+if not "%CHOICE%"=="0" goto again
+
+
+
